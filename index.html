@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi plan para manejar la migraña</title>
+<style>
+:root{--ink:#2a2d4a;--muted:#6b7090;--bg:#f6f4ff;--card:#fff;--a:#7a6ff0;--a2:#ff8fb1;--line:#e6e2fa;--soft:#efecff;--ok:#2fb67c}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:auto;padding:14px 14px 100px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#e4e0ff,#ffe6f0);border-radius:26px;padding:24px 20px;text-align:center}
+.hero h1{font-size:clamp(1.5rem,6vw,2rem);margin:6px 0}.hero p{margin:4px 0;color:var(--muted);font-size:.95rem}
+.mascot{font-size:56px;display:inline-block;animation:float 3s ease-in-out infinite}
+.blob{position:absolute;border-radius:50%;opacity:.35;filter:blur(2px);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}}@keyframes pulse{0%{box-shadow:0 0 0 0 #7a6ff055}100%{box-shadow:0 0 0 22px #7a6ff000}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #4a3fb910;animation:pop .35s ease both}
+h2{font-size:1.25rem;margin:0 0 6px}h3{font-size:1.02rem;margin:14px 0 6px}.muted{color:var(--muted);font-size:.9rem}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:12px}.dots i{height:8px;width:8px;border-radius:9px;background:var(--line);transition:.3s}.dots i.on{width:26px;background:var(--a)}.dots i.done{background:var(--a2)}
+.big{font-size:44px;text-align:center;margin:4px 0}
+.opts{display:grid;gap:10px;margin-top:12px}.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;border:2px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font:inherit;font-weight:600;cursor:pointer;transition:.18s}
+.opt span.e{font-size:26px}.opt:active{transform:scale(.97)}.opt.on{border-color:var(--a);background:var(--soft);transform:scale(1.02)}
+.btn{border:0;border-radius:16px;padding:15px;font:inherit;font-weight:700;cursor:pointer;width:100%;margin-top:14px;background:linear-gradient(135deg,var(--a),#9a8cff);color:#fff;transition:.15s}.btn:active{transform:scale(.97)}.btn.s{background:var(--soft);color:var(--ink)}
+.row{display:flex;gap:8px}.row .btn{margin-top:14px}
+.note{padding:13px;border-radius:14px;margin:10px 0;animation:pop .4s ease both}.warn{background:#fff6e6;border:1px solid #f2d9a6}.urg{background:#fff0f0;border:1px solid #efbcbc;color:#5b1f1f}.good{background:#eaf9f1;border:1px solid #bfe8d3}
+.task{display:flex;gap:12px;align-items:center;padding:13px;border-radius:14px;border:2px solid var(--line);margin:8px 0;cursor:pointer;transition:.2s}.task.on{background:#eaf9f1;border-color:var(--ok);text-decoration:line-through;color:var(--muted)}
+.task b{font-size:24px;transition:.25s}.task.on b{transform:rotate(360deg) scale(1.2)}.task small{display:block;text-decoration:none;color:var(--muted)}
+.prog{height:14px;background:var(--soft);border-radius:20px;overflow:hidden}.prog div{height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--a2));transition:width .5s cubic-bezier(.2,1,.3,1)}
+.breath{height:230px;display:grid;place-items:center}.circle{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,#bfb8ff,var(--a));display:grid;place-items:center;color:#fff;font-weight:700;text-align:center;transition:transform 4s ease-in-out;animation:pulse 2.4s infinite}
+.step{display:flex;gap:12px;align-items:center;padding:12px;margin:8px 0;background:var(--soft);border-radius:14px}.step b{flex:0 0 34px;height:34px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center}
+.faces{display:flex;gap:6px;justify-content:space-between}.faces button{flex:1;font-size:30px;padding:10px 0;border:2px solid var(--line);background:#fff;border-radius:14px;cursor:pointer;transition:.2s}.faces button.on{border-color:var(--a);background:var(--soft);transform:translateY(-6px) scale(1.12)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.chip{padding:9px 13px;border:2px solid var(--line);border-radius:30px;background:#fff;font:inherit;font-size:.92rem;cursor:pointer;color:var(--ink)}.chip.on{background:var(--a);border-color:var(--a);color:#fff}
+.chart{display:flex;align-items:flex-end;gap:5px;height:110px;margin:12px 0 4px}.chart div{flex:1;background:linear-gradient(var(--a2),var(--a));border-radius:8px 8px 3px 3px;min-height:4px;transition:height .7s cubic-bezier(.2,1,.3,1)}.chart div.z{background:var(--line)}
+.flip{perspective:800px;height:150px;margin:10px 0;cursor:pointer}.fi{position:relative;height:100%;transition:transform .6s;transform-style:preserve-3d}.flip.on .fi{transform:rotateY(180deg)}
+.fi>div{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:16px;display:flex;flex-direction:column;justify-content:center}.ff{background:#fff0f4;border:2px solid #ffc6d6}.fb{background:#eaf9f1;border:2px solid #bfe8d3;transform:rotateY(180deg)}
+.meter{height:18px;border-radius:20px;background:linear-gradient(90deg,#ff8a8a,#ffd36b,#6fd9a3);position:relative;margin:10px 0 4px}.meter i{position:absolute;top:-5px;left:0;font-style:normal;font-size:26px;transition:left 1.4s cubic-bezier(.2,1,.3,1);transform:translateX(-50%)}
+.ear{font-size:70px;text-align:center;position:relative}.ear:after{content:"";position:absolute;left:50%;top:50%;width:50px;height:50px;margin:-25px;border-radius:50%;animation:pulse 2s infinite}
+nav{position:fixed;left:0;right:0;bottom:0;background:#fffffff2;backdrop-filter:blur(8px);border-top:1px solid var(--line);display:flex;justify-content:center;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+nav button{flex:1;max-width:150px;border:0;background:none;font:inherit;font-size:.72rem;font-weight:700;color:var(--muted);padding:6px 0;border-radius:14px;cursor:pointer}nav button span{display:block;font-size:24px;transition:.2s}nav button.on{color:var(--a);background:var(--soft)}nav button.on span{transform:translateY(-3px) scale(1.15)}
+.tab{display:none}.tab.on{display:block}.hidden{display:none!important}
+.conf{position:fixed;top:-30px;font-size:26px;pointer-events:none;z-index:9;animation:fall 2.6s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+footer{font-size:.8rem;color:var(--muted);text-align:center;margin-top:20px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<div class="blob" style="width:90px;height:90px;background:#9a8cff;top:-20px;left:-20px"></div><div class="blob" style="width:70px;height:70px;background:#ff8fb1;bottom:-15px;right:-10px;animation-delay:1s"></div>
+<div class="mascot">🦋</div><h1>Hola, vamos a cuidarte 💜</h1>
+<p>Un plan sencillo contra la migraña, en pocos toques.</p>
+</section>
+
+<!-- PLAN -->
+<section class="tab on" id="t-plan">
+<div id="wiz" class="card"></div>
+<div id="res" class="hidden"></div>
+</section>
+
+<!-- CRISIS -->
+<section class="tab" id="t-crisis">
+<div class="card"><h2>🆘 Tengo una crisis ahora</h2><p class="muted">Sigue los pasos con calma. Estoy contigo.</p>
+<div class="step"><b>1</b><span><strong>Descarta alarma:</strong> dolor súbito brutal, debilidad, no poder hablar, fiebre con cuello rígido o visión nueva → urgencias.</span></div>
+<div class="step"><b>2</b><span><strong>Medicación al inicio</strong> del dolor, tal como te indicó tu médico.</span></div>
+<div class="step"><b>3</b><span>🌑 Cuarto oscuro y silencioso, 🧊 compresa fría en frente o nuca, 💧 agua a sorbos.</span></div>
+<div class="step"><b>4</b><span>Respira conmigo 👇 y luego anota la crisis en 📓 Registro.</span></div></div>
+<div class="card" style="text-align:center"><h2>🫁 Respiración guiada</h2>
+<div class="breath"><div class="circle" id="circle">Toca<br>iniciar</div></div>
+<button class="btn" id="bBtn">Empezar a respirar</button><p class="muted">Inhala 4 s · sostén 4 s · exhala 6 s</p></div>
+</section>
+
+<!-- REGISTRO -->
+<section class="tab" id="t-log">
+<div class="card"><h2>📓 Registro en 10 segundos</h2>
+<h3>¿Qué tan fuerte fue?</h3>
+<div class="faces" id="faces"><button data-v="1">😌</button><button data-v="2">🙂</button><button data-v="3">😣</button><button data-v="4">😖</button><button data-v="5">🤯</button></div>
+<h3>¿Qué pudo causarlo?</h3>
+<div class="chips" id="trig"></div>
+<button class="chip" id="med" style="margin-top:12px">💊 Tomé medicación</button>
+<button class="btn" id="save">Guardar ✨</button></div>
+<div class="card"><h2>📊 Tus últimos 14 días</h2><div class="chart" id="chart"></div><p class="muted" id="stats">Aún sin registros.</p>
+<div class="row"><button class="btn s" id="copy">📋 Copiar resumen para el médico</button></div>
+<div class="row"><button class="btn s" id="undo">↩️ Borrar el último</button></div></div>
+</section>
+
+<!-- DAITH -->
+<section class="tab" id="t-daith">
+<div class="card"><div class="ear">👂</div><h2 style="text-align:center">Piercing daith y migraña</h2>
+<p>Es una perforación en el pliegue de cartílago de la oreja. Algunas personas dicen que les alivia, pero ¿qué tan sólido es eso?</p>
+<h3>Nivel de evidencia</h3><div class="meter"><i id="mk">📍</i></div><p class="muted">Muy baja: sin estudios controlados; solo casos y encuestas.</p></div>
+<div class="card"><h2>🔄 Mito vs. realidad</h2><p class="muted">Toca cada tarjeta para voltearla.</p>
+<div class="flip"><div class="fi"><div class="ff"><b>❌ Mito</b>“Mucha gente en redes dice que le funcionó, así que funciona.”</div><div class="fb"><b>✅ Realidad</b>Son anécdotas sin grupo de comparación. No se separa del efecto placebo.</div></div></div>
+<div class="flip"><div class="fi"><div class="ff"><b>❌ Mito</b>“Estimula el nervio vago y apaga la migraña.”</div><div class="fb"><b>✅ Realidad</b>Es solo una hipótesis. No está demostrada.</div></div></div>
+<div class="flip"><div class="fi"><div class="ff"><b>❌ Mito</b>“Es un piercing más, sin riesgo.”</div><div class="fb"><b>✅ Realidad</b>Es cartílago: infección (pericondritis), queloides y sanación de meses.</div></div></div></div>
+<div class="card"><h2>🧭 Si igual decides hacértelo</h2>
+<div class="step"><b>1</b><span>Hazlo <strong>fuera de una crisis</strong> y sin infección en la oreja.</span></div>
+<div class="step"><b>2</b><span>Estudio profesional: aguja estéril desechable (no pistola) y titanio de grado implante.</span></div>
+<div class="step"><b>3</b><span>No dejes tu tratamiento médico; coméntalo con tu neurólogo.</span></div>
+<div class="step"><b>4</b><span><strong>Mídelo:</strong> usa el 📓 Registro 2 meses antes y 2–3 después. Si no baja claro, no funcionó.</span></div>
+<div class="note warn">⚠️ Consulta si hay enrojecimiento que crece, pus, calor, fiebre o dolor fuerte en la oreja.</div>
+<p class="muted">Tu cuerpo, tu decisión. Lo que sí está probado son los tratamientos que indica un médico.</p></div>
+</section>
+<footer>Herramienta educativa. No diagnostica ni receta. Consulta siempre a un profesional de salud.</footer>
+</main>
+<nav id="nav"><button class="on" data-t="plan"><span>🗺️</span>Mi plan</button><button data-t="crisis"><span>🆘</span>Crisis</button><button data-t="log"><span>📓</span>Registro</button><button data-t="daith"><span>👂</span>Daith</button></nav>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+/* Tabs */
+$('nav').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.id==='t-'+b.dataset.t));scrollTo({top:0,behavior:'smooth'});if(b.dataset.t==='daith'){$('mk').style.left='0%';setTimeout(()=>$('mk').style.left='14%',60)}if(b.dataset.t==='log')draw()};
+document.querySelectorAll('.flip').forEach(f=>f.onclick=()=>f.classList.toggle('on'));
+/* Wizard */
+const S=[
+{k:'alarm',m:1,e:'🚨',t:'Primero, lo importante: ¿tienes ahora alguna de estas señales?',o:[['a1','⚡','Dolor súbito, el peor de mi vida'],['a2','🗣️','Debilidad de un lado, no puedo hablar, confusión o convulsión'],['a3','🌡️','Fiebre con cuello rígido'],['a4','👁️','Pérdida de visión o síntoma neurológico nuevo'],['a5','🤰','Embarazo/posparto con dolor intenso']]},
+{k:'dx',e:'🩺',t:'¿Un médico te dijo que es migraña?',o:[['yes','✅','Sí'],['no','🤔','No, lo sospecho'],['unsure','❓','No estoy segura']]},
+{k:'days',e:'📅',t:'¿Cuántos días al mes te duele la cabeza?',o:[['0','😊','Ninguno ahora'],['1-3','🙂','1–3 días'],['4-7','😕','4–7 días'],['8-14','😣','8–14 días'],['15+','😖','15 o más']]},
+{k:'med',e:'💊',t:'¿Cuántos días al mes tomas medicación para el dolor?',o:[['0','🚫','Ninguno'],['1-5','🙂','1–5 días'],['6-9','😬','6–9 días'],['10+','⚠️','10 o más']]},
+{k:'dur',e:'⏱️',t:'¿Cuánto dura una crisis normalmente?',o:[['hours','⚡','Menos de 4 horas'],['long','🕓','4–72 horas'],['72plus','🕰️','Más de 72 horas'],['varies','🎲','Varía']]},
+{k:'habit',m:1,e:'🌱',t:'¿Qué te cuesta mantener? (marca todo lo que aplique)',o:[['sleep','😴','Dormir a horas regulares'],['meals','🍽️','No saltarme comidas'],['water','💧','Tomar suficiente agua'],['stress','🧘','Bajar el estrés'],['caffeine','☕','Cafeína estable'],['triggers','🔍','Identificar mis desencadenantes']]},
+{k:'goal',e:'🎯',t:'¿Qué quieres lograr primero?',o:[['frequency','📉','Tener menos crisis'],['acute','🩹','Manejar mejor el dolor al empezar'],['habits','🌿','Ordenar mis hábitos'],['doctor','📝','Prepararme para la consulta']]},
+{k:'daith',e:'👂',t:'¿Estás pensando en un piercing daith?',o:[['yes','👍','Sí, quiero saber más'],['no','👎','No']]}];
+let A={},i=0;
+function step(){const s=S[i],sel=A[s.k]||(s.m?[]:null);
+ $('wiz').innerHTML='<div class="dots">'+S.map((_,j)=>'<i class="'+(j<i?'done':j===i?'on':'')+'"></i>').join('')+'</div><div class="big">'+s.e+'</div><h2 style="text-align:center">'+s.t+'</h2><p class="muted" style="text-align:center">Paso '+(i+1)+' de '+S.length+'</p><div class="opts">'+
+ s.o.map(o=>'<button class="opt'+((s.m?sel.includes(o[0]):sel===o[0])?' on':'')+'" data-v="'+o[0]+'"><span class="e">'+o[1]+'</span>'+esc(o[2])+'</button>').join('')+'</div>'+
+ (s.m?'<button class="btn" id="nx">'+(s.k==='alarm'?'Ninguna / continuar →':'Continuar →')+'</button>':'')+(i?'<button class="btn s" id="bk">← Atrás</button>':'');
+ $('wiz').style.animation='none';void $('wiz').offsetWidth;$('wiz').style.animation='';
+ $('wiz').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const v=b.dataset.v;if(s.m){const a=A[s.k]=A[s.k]||[];a.includes(v)?a.splice(a.indexOf(v),1):a.push(v);b.classList.toggle('on')}else{A[s.k]=v;b.classList.add('on');setTimeout(next,250)}});
+ if($('nx'))$('nx').onclick=()=>{if(s.k==='alarm'&&(A.alarm||[]).length){next()}else next()};
+ if($('bk'))$('bk').onclick=()=>{i--;step()}}
+function next(){i++;i<S.length?step():finish()}
+step();
+function finish(){
+ const A_=A,al=(A_.alarm||[]).length>0,h=A_.habit||[];let n='';
+ if(al)n+='<div class="note urg"><b>🚨 Busca atención médica urgente ahora.</b><br>Marcaste una posible señal de alarma. No esperes ni asumes que es tu migraña de siempre. No conduzcas tú misma.</div>';
+ if(A_.dx!=='yes')n+='<div class="note warn">🩺 <b>Prioridad:</b> agenda una consulta para confirmar la causa.</div>';
+ if(['8-14','15+'].includes(A_.days))n+='<div class="note warn">📅 <b>Pide cita pronto:</b> con esta frecuencia conviene evaluar tratamiento preventivo.</div>';
+ else if(A_.days==='4-7')n+='<div class="note warn">📅 Considera consultar si las crisis limitan tu día a día.</div>';
+ if(A_.dur==='72plus')n+='<div class="note urg">🕰️ <b>Más de 72 horas de crisis requiere valoración médica urgente.</b></div>';
+ if(['6-9','10+'].includes(A_.med))n+='<div class="note warn">💊 <b>Revisa tu medicación con un profesional:</b> usar analgésicos muchos días puede empeorar las cefaleas.</div>';
+ if(A_.daith==='yes')n+='<div class="note warn">👂 Evidencia muy baja y riesgo de infección. Mira la pestaña <b>Daith</b> antes de decidir.</div>';
+ if(!n)n='<div class="note good">🎉 Sin alertas con lo que respondiste. ¡Enfócate en hábitos y registro!</div>';
+ const H={sleep:['😴','Horario de sueño parecido todos los días','Acuéstate y levántate casi a la misma hora.'],meals:['🍽️','Comidas regulares','Lleva un snack si pasas horas sin comer.'],water:['💧','Agua a mano todo el día','Sorbos regulares.'],stress:['🧘','Pausa de respiración 5–10 min','Practícala a diario, no solo con dolor.'],caffeine:['☕','Cafeína estable','Misma cantidad cada día; no la cortes de golpe.'],triggers:['🔍','Descubrir mis desencadenantes','Usa el 📓 Registro rápido.']};
+ const T=h.map(x=>H[x]);T.push(['📓','Registrar cada crisis','Toma 10 segundos en la pestaña Registro.'],['💊','Usar mi tratamiento según indicación','Sin subir dosis por mi cuenta.']);
+ const G={doctor:['📝','Preparar preguntas para mi consulta','Copia el resumen desde Registro.'],frequency:['📉','Constancia con el registro','Es la base para decidir tratamiento.'],acute:['🩹','Preguntar mi plan al inicio de una crisis','Qué tomar y cuándo.'],habits:['🌿','Elegir solo 1–2 hábitos esta semana','Pequeño y constante gana.']};
+ T.unshift(G[A_.goal]);if(A_.dx!=='yes'||['8-14','15+'].includes(A_.days))T.unshift(['👩‍⚕️','Contactar a un profesional de salud','Comenta frecuencia, duración y cambios.']);
+ $('wiz').classList.add('hidden');$('res').classList.remove('hidden');
+ $('res').innerHTML='<div class="card"><div class="big">🌟</div><h2 style="text-align:center">¡Tu plan está listo!</h2>'+n+'</div><div class="card"><h2>✅ Mis acciones de la semana</h2><div class="prog"><div id="pb"></div></div><p class="muted" id="pt"></p><div id="tk">'+T.map(t=>'<div class="task"><b>'+t[0]+'</b><span><strong>'+esc(t[1])+'</strong><small>'+esc(t[2])+'</small></span></div>').join('')+'</div></div><button class="btn s" id="rs">🔄 Volver a empezar</button>';
+ document.querySelectorAll('.task').forEach(t=>t.onclick=()=>{t.classList.toggle('on');prog()});$('rs').onclick=()=>{A={};i=0;$('res').classList.add('hidden');$('wiz').classList.remove('hidden');step()};prog();scrollTo({top:0,behavior:'smooth'})}
+function prog(){const a=[...document.querySelectorAll('.task')],d=a.filter(x=>x.classList.contains('on')).length;$('pb').style.width=(d/a.length*100)+'%';$('pt').textContent=d+' de '+a.length+' listas'+(d===a.length?' 🎉 ¡Increíble!':'');if(d===a.length&&d)confetti()}
+function confetti(){for(let k=0;k<26;k++){const c=document.createElement('div');c.className='conf';c.textContent=['🦋','💜','✨','🌸','⭐'][k%5];c.style.left=Math.random()*100+'vw';c.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),3600)}}
+/* Respiración */
+let bt=null;const ph=[['Inhala',4,1.8],['Sostén',4,1.8],['Exhala',6,1]];
+$('bBtn').onclick=()=>{const c=$('circle');if(bt){clearTimeout(bt);bt=null;c.style.transform='scale(1)';c.innerHTML='Toca<br>iniciar';$('bBtn').textContent='Empezar a respirar';return}
+ $('bBtn').textContent='Detener';let p=0;(function go(){const [t,s,sc]=ph[p%3];c.style.transitionDuration=(p%3===1?0:s)+'s';c.style.transform='scale('+sc+')';c.textContent=t;bt=setTimeout(go,s*1000);p++})()};
+/* Registro */
+let sv=0,mv=false,tg='Ninguno claro',log=store.get('mig_log',[]);
+$('trig').innerHTML=['Ninguno claro','😴 Poco sueño','🍽️ Salté comida','😰 Estrés','🌸 Menstruación','☕ Cafeína','💡 Luz/olor/ruido','🌧️ Clima'].map(t=>'<button class="chip'+(t==='Ninguno claro'?' on':'')+'">'+t+'</button>').join('');
+$('trig').onclick=e=>{const b=e.target.closest('button');if(!b)return;tg=b.textContent;[...$('trig').children].forEach(c=>c.classList.toggle('on',c===b))};
+$('faces').onclick=e=>{const b=e.target.closest('button');if(!b)return;sv=+b.dataset.v;[...$('faces').children].forEach(c=>c.classList.toggle('on',c===b))};
+$('med').onclick=()=>{mv=!mv;$('med').classList.toggle('on',mv)};
+$('save').onclick=()=>{if(!sv){$('faces').animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:250});return}
+ log.push({d:new Date().toLocaleDateString('en-CA'),i:sv,t:tg,m:mv});store.set('mig_log',log);sv=0;mv=false;$('med').classList.remove('on');[...$('faces').children].forEach(c=>c.classList.remove('on'));$('save').textContent='¡Guardado! 💜';setTimeout(()=>$('save').textContent='Guardar ✨',1500);draw()};
+$('undo').onclick=()=>{log.pop();store.set('mig_log',log);draw()};
+const rec=()=>{const l=new Date(Date.now()-30*864e5).toLocaleDateString('en-CA');return log.filter(x=>x.d>=l)};
+function draw(){const days=[];for(let k=13;k>=0;k--)days.push(new Date(Date.now()-k*864e5).toLocaleDateString('en-CA'));
+ $('chart').innerHTML=days.map(d=>{const m=Math.max(0,...log.filter(x=>x.d===d).map(x=>x.i));return '<div class="'+(m?'':'z')+'" style="height:4%" data-h="'+(m?m*20:4)+'" title="'+d+'"></div>'}).join('');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>$('chart').querySelectorAll('div').forEach(b=>b.style.height=b.dataset.h+'%')));
+ const r=rec(),md=new Set(r.filter(x=>x.m).map(x=>x.d)).size;
+ $('stats').innerHTML=log.length?'Últimos 30 días: <b>'+r.length+'</b> crisis · <b>'+md+'</b> días con medicación'+(md>=10?'<br>⚠️ <b>10 o más días de medicación al mes: consulta a tu médico.</b>':''):'Aún sin registros. Cada crisis anotada te ayuda a ti y a tu médico.'}
+$('copy').onclick=async()=>{const r=rec(),md=new Set(r.filter(x=>x.m).map(x=>x.d)).size;const tx='Resumen de migraña (30 días)\nCrisis: '+r.length+'\nDías con medicación: '+md+'\n'+r.map(x=>x.d+' · intensidad '+x.i+'/5 · '+x.t+(x.m?' · medicación':'')).join('\n');
+ try{await navigator.clipboard.writeText(tx);$('copy').textContent='¡Copiado! ✅'}catch(e){prompt('Copia este texto:',tx)}setTimeout(()=>$('copy').textContent='📋 Copiar resumen para el médico',1800)};
+draw();
+</script>
+</body>
+</html>
